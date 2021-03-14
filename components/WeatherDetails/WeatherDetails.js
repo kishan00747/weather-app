@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { TIME_PERIODS } from '../../constants/time';
-import { BREAKPOINTS } from '../../constants/sizes';
-import useWinResize from '../../hooks/useWinResize';
 import { roundOff } from '../../utils/common.utils';
 import PeriodWiseData from './PeriodWiseData';
 import TimePeriodSelector from './TimePeriodSelector';
@@ -9,10 +7,9 @@ import styles from './WeatherDetails.module.scss';
 
 const WeatherDetails = (props) => {
 
-    const { data, setSelectedItem, selectedItem } = props;
+    const { data, setSelectedItem, selectedItem, mobileView } = props;
     const [selectedTimePeriod, setSelectedTimePeriod] = useState(undefined);
     const [selectedItemIndex, setSelectedItemIndex] = useState(undefined);
-    const { width: winWidth } = useWinResize();
 
     useEffect(() => {
         if (data && selectedTimePeriod && selectedItemIndex !== undefined) {
@@ -39,7 +36,7 @@ const WeatherDetails = (props) => {
             {
                 data && selectedTimePeriod && selectedItem
                     ?
-                    winWidth > BREAKPOINTS.SMALL
+                    !mobileView
                         ?
                         <>
                             <TimePeriodSelector
@@ -61,11 +58,6 @@ const WeatherDetails = (props) => {
                         :
                         <>
                             <Temperature temp={selectedItem?.temp?.day ?? selectedItem?.temp} unit={'0C'} />
-                            <TimePeriodSelector
-                                onTimePeriodSelect={onTimePeriodSelect}
-                                selectedTimePeriod={selectedTimePeriod}
-                                data={data}
-                            />
                             <div className={styles.weatherReport}>
                                 <PeriodWiseData
                                     data={data?.[selectedTimePeriod]}
@@ -74,8 +66,12 @@ const WeatherDetails = (props) => {
                                     selectedItemIndex={selectedItemIndex}
                                     selectedItem={selectedItem}
                                 />
-
                             </div>
+                            <TimePeriodSelector
+                                onTimePeriodSelect={onTimePeriodSelect}
+                                selectedTimePeriod={selectedTimePeriod}
+                                data={data}
+                            />
                         </>
                     :
                     null

@@ -1,15 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function useWinResize(timeout = 250) {
 
     const [winObj, setWinObj] = useState({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: 0,
+        height: 0,
     });
 
     const timeoutRef = useRef(null);
 
     useEffect(() => {
+        setWinObj({
+            width: window.innerWidth,
+            height: window.innerHeight,
+        });
+
         const resizeHandler = () => {
             setWinObj({
                 width: window.innerWidth,

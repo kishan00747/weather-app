@@ -5,12 +5,15 @@ import { getCityData } from '../../utils/userData.utils';
 import styles from './Weather.module.scss';
 import { getWeatherData } from '../../utils/weatherData.utils';
 import WeatherDetails from '../WeatherDetails/WeatherDetails';
+import { BREAKPOINTS } from '../../constants/sizes';
+import useWinResize from '../../hooks/useWinResize';
 
 const Weather = (props) => {
 
     const [userData, setUserData] = useState(undefined);
     const [weatherData, setWeatherData] = useState();
     const [selectedItem, setSelectedItem] = useState(undefined);
+    const { width: winWidth } = useWinResize();
 
     useEffect(async () => {
         let data = await getCityData();
@@ -24,15 +27,23 @@ const Weather = (props) => {
         }
     }, [userData]);
 
+    const isMobileView = winWidth < BREAKPOINTS.SMALL;
 
     return (
         <UserContext.Provider value={userData}>
             <div className={styles.weatherWrapper}>
                 {userData?.city &&
-                    <div className={styles.innerContainer}>
-                        <Header place={userData?.city} status={selectedItem?.weather?.[0]?.main ?? 'Looking Around...'} />
-                        {weatherData && <WeatherDetails data={weatherData} setSelectedItem={setSelectedItem} selectedItem={selectedItem} />}
-                    </div>
+                    <>
+                        <div className={styles.innerContainer}>
+                            <Header place={userData?.city} status={selectedItem?.weather?.[0]?.main ?? 'Looking Around...'} mobileView={isMobileView} />
+                            {weatherData && <WeatherDetails data={weatherData} setSelectedItem={setSelectedItem} selectedItem={selectedItem} mobileView={isMobileView} />}
+                        </div>
+                        {selectedItem &&
+                            <div className={styles.backgroundImage} >
+                                <img src={`http://openweathermap.org/img/wn/${selectedItem?.weather?.[0]?.icon ?? '02d'}@2x.png`} />
+                            </div>
+                        }
+                    </>
                 }
             </div>
         </UserContext.Provider>

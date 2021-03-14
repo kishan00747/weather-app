@@ -16,3 +16,7 @@ export const getFormattedDate = (timeInMs, timePeriod) => {
 export const roundOff = (val) => {
     return Math.round(val);
 }
+
+export const scrollbarVisible = (element) => {
+    return element.scrollWidth > element.clientWidth;
+}

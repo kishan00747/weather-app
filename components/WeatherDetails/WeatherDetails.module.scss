@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
-    margin: 16px 0;
+    margin: 16px;
     
     .timePeriodItem {
         box-sizing: content-box;
@@ -34,12 +34,14 @@
     display: flex;
     align-items: flex-start;
     --temperature-font-size: calc(var(--primary-font-size) * 1.5); 
+    animation: fadeIn 0.3s ease-in;
+
     .number {
         font-size: calc(var(--temperature-font-size) * 6);
         line-height: 0.85;
     }
     .unit {
-        font-size: calc(var(--temperature-font-size) * 2);
+        font-size: calc(var(--temperature-font-size) * 1.5);
     }
 }
 
@@ -51,28 +53,54 @@
     .weatherList {
         display: flex;
         margin: 0;
+        flex: 1;
         padding: 0;
         list-style-type: none;
         margin-right: auto;
         overflow: auto;
-        max-width: 100%;
-        padding: 12px 0;
+        padding: 16px;
+        margin: 16px 48px 16px 0;
+        position: relative;
+        transition: all 0.2s;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            bottom: 0;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--text-color);
+            opacity: 0.5;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        &.scrollAdjust {
+            padding-bottom: 6px;
+        }
     }
 
     .weatherItem {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: clamp(50px, 5vw, 5vw);
+        width: clamp(60px, 6vw, 6vw);
         flex-shrink: 0;
-        height: clamp(100px, 10vw, 10vw);
+        height: clamp(120px, 12vw, 12vw);
         border: 2px solid var(--text-color);
         margin-right: 12px;
-        border-radius: 32px;
+        border-radius: clamp(30px, 3vw, 3vw);
         padding: 8px;
         cursor: pointer;
         transition-duration: 0.5s;
         transition-property: background-color, color;
+        animation: fadeIn 0.3s ease-in;
 
         .weatherItem__icon {
             width: 100%;
@@ -111,9 +139,36 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (hover: none) {
+    .weatherList {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .weatherDetails {
+        margin-top: 0;
+        flex: 1;
+
+        .weatherList {
+            margin: 0;
+        }
+    }
+
     .temperature {
-        --temperature-font-size: 8vw;
+        --temperature-font-size: 9vw;
+        justify-content: center;
+        margin: auto 0;
+    }
+
+    .timePeriodSelector {
         justify-content: center;
     }
+}
+
+@keyframes fadeIn{
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }

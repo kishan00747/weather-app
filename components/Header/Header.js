@@ -1,7 +1,7 @@
 import styles from './Header.module.scss';
 const Header = (props) => {
 
-    const { place, status } = props;
+    const { place, status, mobileView } = props;
 
     return (
         <div className={styles.header}>

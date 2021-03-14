@@ -2,6 +2,9 @@
     display: flex;
     align-items: flex-start;
     width: 100%;
+}
+
+.weatherStatus {
     font-size: calc(var(--primary-font-size) * 6);
 }
 
@@ -10,5 +13,22 @@
         border: 2px solid var(--text-color);
         border-radius: calc(var(--primary-font-size) * 1.2);
         margin-left: auto;
-        font-size: var(--primary-font-size);
+        font-size: clamp(16px, var(--primary-font-size),  var(--primary-font-size));
+}
+
+
+@media only screen and (max-width: 768px) {
+    .header {
+        margin-top: 16px;
+        justify-content: center;
+        padding: 24px;
+        
+        .weatherStatus {
+            display: none;
+        } 
+
+        .cityBadge {
+            margin-left: 0;
+        }
+    }
 }
