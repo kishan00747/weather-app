@@ -23,7 +23,6 @@ export const getWeatherData = async (lat, lon) => {
 
     try {
         res = await Axios.get(url);
-        console.log(res.data);
         return res.data;
     }
     catch (e) {
