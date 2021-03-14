@@ -10,6 +10,7 @@ const Weather = (props) => {
 
     const [userData, setUserData] = useState(undefined);
     const [weatherData, setWeatherData] = useState();
+    const [selectedItem, setSelectedItem] = useState(undefined);
 
     useEffect(async () => {
         let data = await getCityData();
@@ -29,8 +30,8 @@ const Weather = (props) => {
             <div className={styles.weatherWrapper}>
                 {userData?.city &&
                     <div className={styles.innerContainer}>
-                        <Header place={userData?.city} status={weatherData?.current?.weather?.[0]?.main ?? 'Looking Around...'} />
-                        {weatherData && <WeatherDetails data={weatherData} />}
+                        <Header place={userData?.city} status={selectedItem?.weather?.[0]?.main ?? 'Looking Around...'} />
+                        {weatherData && <WeatherDetails data={weatherData} setSelectedItem={setSelectedItem} selectedItem={selectedItem} />}
                     </div>
                 }
             </div>

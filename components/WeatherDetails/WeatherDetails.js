@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TIME_PERIODS } from '../../constants/time';
 import { BREAKPOINTS } from '../../constants/sizes';
 import useWinResize from '../../hooks/useWinResize';
@@ -9,9 +9,8 @@ import styles from './WeatherDetails.module.scss';
 
 const WeatherDetails = (props) => {
 
-    const { data } = props;
+    const { data, setSelectedItem, selectedItem } = props;
     const [selectedTimePeriod, setSelectedTimePeriod] = useState(undefined);
-    const [selectedItem, setSelectedItem] = useState(undefined);
     const [selectedItemIndex, setSelectedItemIndex] = useState(undefined);
     const { width: winWidth } = useWinResize();
 
