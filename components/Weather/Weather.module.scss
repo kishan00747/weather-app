@@ -1,0 +1,20 @@
+.weatherWrapper {
+    --primary-color: var(--grey);
+    --primary-font-family: var(--source-sans-pro), var(--fallback-font);
+    --text-color: var(--black);
+    --primary-font-size: var(--responsive-font-size);
+
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-family: var(--primary-font-family);
+    font-size: var(--primary-font-size);
+    font-weight: 600;
+
+    .innerContainer {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        padding: 32px;
+    }
+
+}

@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    font-size: calc(var(--primary-font-size) * 6);
+}
+
+.cityBadge {
+        padding: 6px 16px;
+        border: 2px solid var(--text-color);
+        border-radius: calc(var(--primary-font-size) * 1.2);
+        margin-left: auto;
+        font-size: var(--primary-font-size);
+}

@@ -1,0 +1,119 @@
+.weatherDetails {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+}
+
+.timePeriodSelector {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    margin: 16px 0;
+    
+    .timePeriodItem {
+        box-sizing: content-box;
+        padding: 4px;
+        font-size: 16px;
+        line-height: 28px;
+        text-align: center;
+        width: 28px;
+        height: 28px;
+        margin-right: 0;
+        cursor: pointer;
+
+        &.selected {
+            padding: 2px;
+            border: 2px solid var(--text-color);
+            border-radius: 50%;
+        }
+    }
+}
+
+.temperature {
+    display: flex;
+    align-items: flex-start;
+    --temperature-font-size: calc(var(--primary-font-size) * 1.5); 
+    .number {
+        font-size: calc(var(--temperature-font-size) * 6);
+        line-height: 0.85;
+    }
+    .unit {
+        font-size: calc(var(--temperature-font-size) * 2);
+    }
+}
+
+.weatherReport {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    
+    .weatherList {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        margin-right: auto;
+        overflow: auto;
+        max-width: 100%;
+        padding: 12px 0;
+    }
+
+    .weatherItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: clamp(50px, 5vw, 5vw);
+        flex-shrink: 0;
+        height: clamp(100px, 10vw, 10vw);
+        border: 2px solid var(--text-color);
+        margin-right: 12px;
+        border-radius: 32px;
+        padding: 8px;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        transition-property: background-color, color;
+
+        .weatherItem__icon {
+            width: 100%;
+            height: auto;
+
+            > img {
+                object-fit: contain;
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .weatherItem__label {
+            margin-top: auto;
+            margin-bottom: 8px;
+            font-size: 16px;  
+            text-align: center;
+            display: flex; 
+            flex-direction: column;
+
+            span {
+                &:first-child {
+                    font-size: 16px;
+                }
+
+                &:nth-child(2) {
+                    font-size: 12px;
+                }
+            }
+        }
+
+        &.selected {
+            background-color: var(--text-color);
+            color: var(--primary-color);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .temperature {
+        --temperature-font-size: 8vw;
+        justify-content: center;
+    }
+}

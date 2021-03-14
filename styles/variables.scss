@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap');
+
+:root {
+    // Colors
+    --grey: #dddddd;
+    --black: #222222;
+
+    // Fonts
+    --source-sans-pro: 'Source Sans Pro';
+    --fallback-font: Helvetica;
+
+    --responsive-font-size: clamp(12px, calc(1.5vw), calc(1.5vw));
+}
+
+
