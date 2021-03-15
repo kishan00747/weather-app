@@ -41,7 +41,7 @@ const Weather = (props) => {
                 {userData?.city &&
                     <>
                         <div className={styles.innerContainer}>
-                            <Header place={userData?.city} status={selectedItem?.weather?.[0]?.main ?? 'Looking Around...'} selectedUnit={selectedUnit} onUnitChange={onUnitChange} />
+                            <Header place={userData?.city} status={selectedItem?.weather?.[0]?.main ?? 'Looking Outside...'} selectedUnit={selectedUnit} onUnitChange={onUnitChange} />
                             {weatherData && <WeatherDetails data={weatherData} setSelectedItem={setSelectedItem} selectedItem={selectedItem} mobileView={isMobileView} selectedUnit={selectedUnit} />}
                         </div>
                         {selectedItem &&
