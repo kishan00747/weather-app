@@ -7,12 +7,14 @@ import { getWeatherData } from '../../utils/weatherData.utils';
 import WeatherDetails from '../WeatherDetails/WeatherDetails';
 import { BREAKPOINTS } from '../../constants/sizes';
 import useWinResize from '../../hooks/useWinResize';
+import { UNITS } from '../../constants/units';
 
 const Weather = (props) => {
 
     const [userData, setUserData] = useState(undefined);
     const [weatherData, setWeatherData] = useState();
     const [selectedItem, setSelectedItem] = useState(undefined);
+    const [selectedUnit, setSelectedUnit] = useState(UNITS.CELCIUS);
     const { width: winWidth } = useWinResize();
 
     useEffect(async () => {
@@ -27,6 +29,10 @@ const Weather = (props) => {
         }
     }, [userData]);
 
+    const onUnitChange = (e) => {
+        setSelectedUnit(e.target.value);
+    }
+
     const isMobileView = winWidth < BREAKPOINTS.SMALL;
 
     return (
@@ -35,8 +41,8 @@ const Weather = (props) => {
                 {userData?.city &&
                     <>
                         <div className={styles.innerContainer}>
-                            <Header place={userData?.city} status={selectedItem?.weather?.[0]?.main ?? 'Looking Around...'} mobileView={isMobileView} />
-                            {weatherData && <WeatherDetails data={weatherData} setSelectedItem={setSelectedItem} selectedItem={selectedItem} mobileView={isMobileView} />}
+                            <Header place={userData?.city} status={selectedItem?.weather?.[0]?.main ?? 'Looking Around...'} selectedUnit={selectedUnit} onUnitChange={onUnitChange} />
+                            {weatherData && <WeatherDetails data={weatherData} setSelectedItem={setSelectedItem} selectedItem={selectedItem} mobileView={isMobileView} selectedUnit={selectedUnit} />}
                         </div>
                         {selectedItem &&
                             <div className={styles.backgroundImage} >

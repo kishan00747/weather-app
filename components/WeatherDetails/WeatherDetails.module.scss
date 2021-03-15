@@ -21,6 +21,7 @@
         height: 28px;
         margin-right: 0;
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
 
         &.selected {
             padding: 2px;
@@ -98,6 +99,7 @@
         border-radius: clamp(30px, 3vw, 3vw);
         padding: 8px;
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
         transition-duration: 0.5s;
         transition-property: background-color, color;
         animation: fadeIn 0.3s ease-in;
@@ -110,6 +112,7 @@
                 object-fit: contain;
                 width: 100%;
                 height: auto;
+                filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.6));
             }
         }
 

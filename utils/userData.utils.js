@@ -8,7 +8,7 @@ export const getCityData = async () => {
         return res.data;
     }
     catch (e) {
-        console.error(e);
+        // console.error(e);
         return null;
     }
 }

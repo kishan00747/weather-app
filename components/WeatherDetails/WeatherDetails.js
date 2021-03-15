@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { TIME_PERIODS } from '../../constants/time';
-import { roundOff } from '../../utils/common.utils';
+import { formatUnitAndRoundOff } from '../../utils/common.utils';
 import PeriodWiseData from './PeriodWiseData';
 import TimePeriodSelector from './TimePeriodSelector';
 import styles from './WeatherDetails.module.scss';
 
 const WeatherDetails = (props) => {
 
-    const { data, setSelectedItem, selectedItem, mobileView } = props;
+    const { data, setSelectedItem, selectedItem, mobileView, selectedUnit } = props;
     const [selectedTimePeriod, setSelectedTimePeriod] = useState(undefined);
     const [selectedItemIndex, setSelectedItemIndex] = useState(undefined);
 
@@ -52,12 +52,12 @@ const WeatherDetails = (props) => {
                                     selectedItemIndex={selectedItemIndex}
                                     selectedItem={selectedItem}
                                 />
-                                <Temperature temp={selectedItem?.temp?.day ?? selectedItem?.temp} unit={'0C'} />
+                                <Temperature temp={selectedItem?.temp?.day ?? selectedItem?.temp} unit={selectedUnit} />
                             </div>
                         </>
                         :
                         <>
-                            <Temperature temp={selectedItem?.temp?.day ?? selectedItem?.temp} unit={'0C'} />
+                            <Temperature temp={selectedItem?.temp?.day ?? selectedItem?.temp} unit={selectedUnit} />
                             <div className={styles.weatherReport}>
                                 <PeriodWiseData
                                     data={data?.[selectedTimePeriod]}
@@ -85,11 +85,10 @@ const WeatherDetails = (props) => {
 
 const Temperature = (props) => {
     const { temp, unit } = props;
-
     return (
         <div className={styles.temperature}>
-            <span className={styles.number}>{roundOff(temp)}</span>
-            <span className={styles.unit}>{unit}</span>
+            <span className={styles.number}>{formatUnitAndRoundOff(temp, unit)}</span>
+            <span className={styles.unit}>{'0' + unit}</span>
         </div>
     )
 }

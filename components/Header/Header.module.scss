@@ -8,13 +8,69 @@
     font-size: calc(var(--primary-font-size) * 6);
 }
 
-.cityBadge {
+.infoPanel {
+    margin-left: auto;
+
+    .cityBadge {
         padding: 6px 16px;
         border: 2px solid var(--text-color);
         border-radius: calc(var(--primary-font-size) * 1.2);
-        margin-left: auto;
         font-size: clamp(16px, var(--primary-font-size),  var(--primary-font-size));
+    }
 }
+
+.switch {
+    margin-top: 16px;
+    display: flex;
+    border: 2px solid var(--text-color);
+    border-radius: 14px;
+    position: relative;
+
+    > .switchItem {
+        padding: 8px;
+        flex: 1;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        input {
+            display: none;
+        }
+
+        label {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        input:checked ~ label  {
+            color: var(--primary-color);
+        }
+    }
+    
+    .slider {
+        position: absolute;
+        left: 2%;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: black;
+        z-index: -1;
+        width: 48%;
+        height: 90%;
+        transition: all 0.3s ease;
+        border-radius: 14px;
+    }
+
+    // .switchItem:first-child[data-checked="true"] ~ .slider {
+    // }
+
+    .switchItem:nth-child(2)[data-checked="true"] ~ .slider {
+        transform: translateY(-50%) translateX(98%);
+    }
+}
+
+
 
 
 @media only screen and (max-width: 768px) {
@@ -27,7 +83,7 @@
             display: none;
         } 
 
-        .cityBadge {
+        .infoPanel {
             margin-left: 0;
         }
     }

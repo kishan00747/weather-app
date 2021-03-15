@@ -11,7 +11,7 @@ export const getWeatherData = async (lat, lon) => {
         urlObj.searchParams.set('lon', lon);
         urlObj.searchParams.set('exclude', 'alerts,minutely');
         urlObj.searchParams.set('appid', process.env.NEXT_PUBLIC_OW_KEY);
-        urlObj.searchParams.set('units', 'metric');
+        urlObj.searchParams.set('units', 'standard');
     }
     else {
         return null;
@@ -26,7 +26,7 @@ export const getWeatherData = async (lat, lon) => {
         return res.data;
     }
     catch (e) {
-        console.error(e);
+        // console.error(e);
         return null;
     }
 }
