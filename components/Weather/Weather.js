@@ -25,6 +25,7 @@ const Weather = (props) => {
     useEffect(async () => {
         if (userData) {
             let data = await getWeatherData(userData.latitude, userData.longitude);
+            console.log(data);
             setWeatherData(data);
         }
     }, [userData]);
