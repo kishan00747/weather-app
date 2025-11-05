@@ -43,7 +43,7 @@ export const getWeatherData = async (lat, lon) => {
         return transformForecastData(res.data);
     }
     catch (e) {
-        // console.error(e);
+        console.error(e);
         return null;
     }
 }
