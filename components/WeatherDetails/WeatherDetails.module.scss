@@ -92,9 +92,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: clamp(60px, 6vw, 6vw);
+        width: clamp(65px, 6.5vw, 6.5vw);
         flex-shrink: 0;
-        height: clamp(120px, 12vw, 12vw);
+        height: clamp(150px, 15vw, 15vw);
         border: 2px solid var(--text-color);
         margin-right: 12px;
         border-radius: clamp(30px, 3vw, 3vw);
