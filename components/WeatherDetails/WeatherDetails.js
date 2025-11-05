@@ -39,11 +39,7 @@ const WeatherDetails = (props) => {
                     !mobileView
                         ?
                         <>
-                            <TimePeriodSelector
-                                onTimePeriodSelect={onTimePeriodSelect}
-                                selectedTimePeriod={selectedTimePeriod}
-                                data={data}
-                            />
+                            <Temperature temp={selectedItem?.main?.temp?.day ?? selectedItem?.main?.temp} unit={selectedUnit} />
                             <div className={styles.weatherReport}>
                                 <PeriodWiseData
                                     data={data?.[selectedTimePeriod]}
@@ -52,8 +48,12 @@ const WeatherDetails = (props) => {
                                     selectedItemIndex={selectedItemIndex}
                                     selectedItem={selectedItem}
                                 />
-                                <Temperature temp={selectedItem?.temp?.day ?? selectedItem?.temp} unit={selectedUnit} />
                             </div>
+                            <TimePeriodSelector
+                                onTimePeriodSelect={onTimePeriodSelect}
+                                selectedTimePeriod={selectedTimePeriod}
+                                data={data}
+                            />
                         </>
                         :
                         <>
