@@ -58,8 +58,7 @@ const WeatherItem = (props) => {
                 <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} />
             </div>
             <div className={styles.weatherItem__label}>
-                {text[0] && <span>{text[0]}</span>}
-                {text[1] && <span>{text[1]}</span>}
+                {text.map(t => <span>{t}</span>)}
             </div>
         </li>
     )

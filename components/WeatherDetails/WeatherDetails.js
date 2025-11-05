@@ -57,7 +57,7 @@ const WeatherDetails = (props) => {
                         </>
                         :
                         <>
-                            <Temperature temp={selectedItem?.temp?.day ?? selectedItem?.temp} unit={selectedUnit} />
+                            <Temperature temp={selectedItem?.main?.temp?.day ?? selectedItem?.main?.temp} unit={selectedUnit} />
                             <div className={styles.weatherReport}>
                                 <PeriodWiseData
                                     data={data?.[selectedTimePeriod]}

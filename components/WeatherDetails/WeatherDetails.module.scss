@@ -33,16 +33,17 @@
 
 .temperature {
     display: flex;
+    max-width: 95%;
     align-items: flex-start;
     --temperature-font-size: calc(var(--primary-font-size) * 1.5); 
     animation: fadeIn 0.3s ease-in;
 
     .number {
-        font-size: calc(var(--temperature-font-size) * 6);
+        font-size: calc(var(--temperature-font-size) * 5);
         line-height: 0.85;
     }
     .unit {
-        font-size: calc(var(--temperature-font-size) * 1.5);
+        font-size: calc(var(--temperature-font-size) * 1.4);
     }
 }
 
@@ -126,10 +127,14 @@
 
             span {
                 &:first-child {
-                    font-size: 16px;
+                    font-size: 10px;
                 }
 
                 &:nth-child(2) {
+                    font-size: 16px;
+                }
+
+                &:nth-child(3) {
                     font-size: 12px;
                 }
             }

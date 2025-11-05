@@ -6,10 +6,10 @@ export const getFormattedDate = (timeInMs, timePeriod) => {
     const date = moment(timeInMs);
     switch (timePeriod) {
         case TIME_PERIODS.DAILY: {
-            return date.format('ddd');
+            return `${date.format("DD MMM")}\n${date.format('ddd')}`;
         }
         case TIME_PERIODS.HOURLY: {
-            return `${date.format("ddd")}\n${date.format("hha")}`
+            return `${date.format("DD MMM")}\n${date.format("ddd")}\n${date.format("hha")}`
         }
     }
 }
