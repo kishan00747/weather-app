@@ -37,7 +37,7 @@
     display: flex;
     max-width: 95%;
     align-items: flex-start;
-    --temperature-font-size: calc(var(--primary-font-size) * 2.5); 
+    --temperature-font-size: calc(var(--primary-font-size) * 2.0); 
     animation: fadeIn 0.3s ease-in;
     justify-content: center;
     margin: auto 0;
@@ -47,7 +47,7 @@
         line-height: 0.85;
     }
     .unit {
-        font-size: calc(var(--temperature-font-size) * 1.4);
+        font-size: calc(var(--temperature-font-size) * 1.5);
     }
 }
 
@@ -171,7 +171,7 @@
     }
 
     .temperature {
-        --temperature-font-size: 9vw;
+        --temperature-font-size: 8vw;
         justify-content: center;
         margin: auto 0;
     }
