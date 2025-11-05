@@ -40,6 +40,11 @@ const WeatherDetails = (props) => {
                         ?
                         <>
                             <Temperature temp={selectedItem?.main?.temp?.day ?? selectedItem?.main?.temp} unit={selectedUnit} />
+                            <TimePeriodSelector
+                                onTimePeriodSelect={onTimePeriodSelect}
+                                selectedTimePeriod={selectedTimePeriod}
+                                data={data}
+                            />
                             <div className={styles.weatherReport}>
                                 <PeriodWiseData
                                     data={data?.[selectedTimePeriod]}
@@ -49,15 +54,15 @@ const WeatherDetails = (props) => {
                                     selectedItem={selectedItem}
                                 />
                             </div>
-                            <TimePeriodSelector
-                                onTimePeriodSelect={onTimePeriodSelect}
-                                selectedTimePeriod={selectedTimePeriod}
-                                data={data}
-                            />
                         </>
                         :
                         <>
                             <Temperature temp={selectedItem?.main?.temp?.day ?? selectedItem?.main?.temp} unit={selectedUnit} />
+                            <TimePeriodSelector
+                                onTimePeriodSelect={onTimePeriodSelect}
+                                selectedTimePeriod={selectedTimePeriod}
+                                data={data}
+                            />
                             <div className={styles.weatherReport}>
                                 <PeriodWiseData
                                     data={data?.[selectedTimePeriod]}
@@ -67,11 +72,6 @@ const WeatherDetails = (props) => {
                                     selectedItem={selectedItem}
                                 />
                             </div>
-                            <TimePeriodSelector
-                                onTimePeriodSelect={onTimePeriodSelect}
-                                selectedTimePeriod={selectedTimePeriod}
-                                data={data}
-                            />
                         </>
                     :
                     null
