@@ -58,16 +58,13 @@
     
     .weatherList {
         display: flex;
-        flex: 1;
         padding: 0;
         list-style-type: none;
-        margin-right: auto;
         overflow: auto;
         padding: 16px;
-        margin: 0;
+        margin: 0 auto;
         position: relative;
         transition: all 0.2s;
-        justify-content: center;
 
 
         &::-webkit-scrollbar {
