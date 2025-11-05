@@ -1,6 +1,23 @@
 import Axios from "axios";
+import { TIME_PERIODS } from "../constants/time";
 import { OPEN_WEATHER_API } from "../constants/urls"
 
+const transformForecastData = (data) => {
+   return data.list.reduce((item, acc) => {
+        const [day] = item.dt_txt.split(" ");
+        if(!acc[TIME_PERIODS.DAILY][day]) {
+            acc[TIME_PERIODS.DAILY][day] = item;
+        }
+
+        acc[TIME_PERIODS.HOURLY][item.dt_txt] = item;
+
+        return acc;
+   }, {
+    ...data,
+    [TIME_PERIODS.DAILY]: {},
+    [TIME_PERIODS.HOURLY]: {}
+   });
+}
 
 export const getWeatherData = async (lat, lon) => {
 
@@ -23,7 +40,7 @@ export const getWeatherData = async (lat, lon) => {
 
     try {
         res = await Axios.get(url);
-        return res.data;
+        return transformForecastData(res.data);
     }
     catch (e) {
         // console.error(e);
