@@ -3,9 +3,7 @@ import { TIME_PERIODS } from "../constants/time";
 import { OPEN_WEATHER_API } from "../constants/urls"
 
 const transformForecastData = (data) => {
-    console.log("api response", data);
-    return data.list.reduce((acc, item) => {
-    console.log("item", item);
+    const dailyAndHourlyData = data.list.reduce((acc, item) => {
         const [day] = item.dt_txt.split(" ");
         if(!acc[TIME_PERIODS.DAILY][day]) {
             acc[TIME_PERIODS.DAILY][day] = item;
@@ -15,10 +13,17 @@ const transformForecastData = (data) => {
 
         return acc;
    }, {
-    ...data,
     [TIME_PERIODS.DAILY]: {},
     [TIME_PERIODS.HOURLY]: {}
    });
+
+   const transformedData = {
+    ...data,
+    [TIME_PERIODS.DAILY]: Object.values(dailyAndHourlyData[TIME_PERIODS.DAILY]),
+    [TIME_PERIODS.HOURLY]: Object.values(dailyAndHourlyData[TIME_PERIODS.HOURLY]),
+   };
+
+   return transformedData;
 }
 
 export const getWeatherData = async (lat, lon) => {
