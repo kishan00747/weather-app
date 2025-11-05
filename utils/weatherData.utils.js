@@ -4,7 +4,7 @@ import { OPEN_WEATHER_API } from "../constants/urls"
 
 const transformForecastData = (data) => {
     console.log("api response", data);
-    return data.list.reduce((item, acc) => {
+    return data.list.reduce((acc, item) => {
     console.log("item", item);
         const [day] = item.dt_txt.split(" ");
         if(!acc[TIME_PERIODS.DAILY][day]) {
