@@ -3,7 +3,9 @@ import { TIME_PERIODS } from "../constants/time";
 import { OPEN_WEATHER_API } from "../constants/urls"
 
 const transformForecastData = (data) => {
-   return data.list.reduce((item, acc) => {
+    console.log("api response", data);
+    return data.list.reduce((item, acc) => {
+    console.log("item", item);
         const [day] = item.dt_txt.split(" ");
         if(!acc[TIME_PERIODS.DAILY][day]) {
             acc[TIME_PERIODS.DAILY][day] = item;
